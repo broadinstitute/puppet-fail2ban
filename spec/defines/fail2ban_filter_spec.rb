@@ -25,7 +25,7 @@ describe 'fail2ban::filter' do
 [Definition]
 
 failregex = 
-ignoreregex = 
+ignoreregex = ^%(__prefix_line)spam_unix\(sshd:auth\):\s+authentication failure;\s*logname=\S*\s*uid=\d*\s*euid=\d*\s*tty=\S*\s*ruser=\S*\s*rhost=<HOST>\s.*$
 
 "
     end
