@@ -54,7 +54,8 @@ before = add_before
 failregex = first_fail_regex
 \tsecond_fail_regex
 \tcomplex[filter]
-ignoreregex = now_ignore
+ignoreregex = ^%(__prefix_line)spam_unix\(sshd:auth\):\s+authentication failure;\s*logname=\S*\s*uid=\d*\s*euid=\d*\s*tty=\S*\s*ruser=\S*\s*rhost=<HOST>\s.*$
+
 
 a = 1
 b = 2
