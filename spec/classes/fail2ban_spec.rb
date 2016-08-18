@@ -89,7 +89,8 @@ enabled  = true/) }
     let(:params) { {:noops => true, :monitor => true } }
     it { should contain_package('fail2ban').with_noop('true') }
     it { should contain_service('fail2ban').with_noop('true') }
-    it { should contain_file('fail2ban.local').with_noop('true') }
+    it { should_not contain_file('fail2ban.local') }
+    it { should_not contain_file('jail.local') }
     it { should contain_monitor__process('fail2ban_process').with_noop('true') }
     it { should contain_monitor__process('fail2ban_process').with_noop('true') }
   end
