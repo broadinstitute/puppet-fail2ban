@@ -1,0 +1,72 @@
+{
+  "name": "broadinstitute-fail2ban",
+  "version": "1.0.0",
+  "author": "Javier Bertoli",
+  "summary": "Puppet module for fail2ban",
+  "license": "Apache-2.0",
+  "source": "https://github.com/broadinstitute/puppet-fail2ban",
+  "project_page": "https://github.com/broadinstitute/puppet-fail2ban",
+  "issues_url": "https://github.com/broadinstitute/puppet-fail2ban/issues",
+  "operatingsystem_support": [
+    {
+      "operatingsystem": "RedHat",
+      "operatingsystemrelease": [
+        "7",
+        "6.6"
+      ]
+    },{
+      "operatingsystem": "CentOS",
+      "operatingsystemrelease": [
+        "7",
+        "6.6"
+      ]
+    },{
+      "operatingsystem": "Ubuntu",
+      "operatingsystemrelease": [
+        "12.04",
+        "14.04"
+      ]
+    },{
+      "operatingsystem": "Debian",
+      "operatingsystemrelease": [
+        "7.8",
+        "8.0"
+      ]
+    },{
+      "operatingsystem": "Archlinux"
+    },{
+      "operatingsystem": "Fedora",
+      "operatingsystemrelease": [
+        "21"
+      ]
+    }
+  ],
+  "requirements": [
+    {
+      "name": "pe",
+      "version_requirement": "3.7"
+    },
+    {
+      "name": "puppet",
+      "version_requirement": "3.6"
+    }
+  ],
+  "dependencies": [
+    {
+      "name": "puppetlabs/stdlib",
+      "version_requirement": ">= 4.1.0"
+    },
+    {
+      "name": "puppetlabs/concat",
+      "version_requirement": ">= 1.0.0"
+    },
+    {
+      "name": "example42/puppi",
+      "version_requirement": ">= 2.0.0"
+    },
+    {
+      "name": "example42/monitor",
+      "version_requirement": ">= 2.0.0"
+    }
+  ]
+}
