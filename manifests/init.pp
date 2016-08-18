@@ -389,8 +389,8 @@ class fail2ban (
   }
 
   $manage_service_autorestart = $fail2ban::bool_service_autorestart ? {
-    true    => Service[fail2ban],
-    false   => undef,
+    true  => Service[fail2ban],
+    false => undef,
   }
 
   $manage_file = $fail2ban::bool_absent ? {
@@ -417,13 +417,13 @@ class fail2ban (
   }
 
   $manage_file_source = $fail2ban::source ? {
-    ''        => undef,
-    default   => $fail2ban::source,
+    ''      => undef,
+    default => $fail2ban::source,
   }
 
   $manage_file_content = $fail2ban::template ? {
-    ''        => undef,
-    default   => template($fail2ban::template),
+    ''      => undef,
+    default => template($fail2ban::template),
   }
 
   if $use_epel {
@@ -472,21 +472,21 @@ class fail2ban (
   # How to manage fail2ban jail.local configuration
   if $fail2ban::jails_config == 'file' {
     $array_jails = is_array($fail2ban::jails) ? {
-      false     => $fail2ban::jails ? {
+      false   => $fail2ban::jails ? {
         ''      => [],
         default => [$fail2ban::jails],
       },
-      default   => $fail2ban::jails,
+      default => $fail2ban::jails,
     }
 
     $manage_file_jails_source = $fail2ban::jails_source ? {
-      ''        => undef,
-      default   => $fail2ban::jails_source,
+      ''      => undef,
+      default => $fail2ban::jails_source,
     }
 
     $manage_file_jails_content = $fail2ban::jails_template ? {
-      ''        => undef,
-      default   => template($fail2ban::jails_template),
+      ''      => undef,
+      default => template($fail2ban::jails_template),
     }
 
     if $fail2ban::manage_file_jails_source

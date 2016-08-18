@@ -68,49 +68,49 @@ define fail2ban::filter (
   $filter_file = "${fail2ban::data_dir}/filter.d/${real_filtername}.local"
 
   $array_failregex = is_array($filterfailregex) ? {
-    false     => $filterfailregex ? {
+    false   => $filterfailregex ? {
       ''      => [],
       default => [$filterfailregex],
     },
-    default   => $filterfailregex,
+    default => $filterfailregex,
   }
 
   $array_ignoreregex = is_array($filterignoreregex) ? {
-    false     => $filterignoreregex? {
+    false   => $filterignoreregex? {
       ''      => [],
       default => [$filterignoreregex],
     },
-    default   => $filterignoreregex,
+    default => $filterignoreregex,
   }
 
   $array_definitionvars = is_array($filterdefinitionvars) ? {
-    false     => $filterdefinitionvars? {
+    false   => $filterdefinitionvars? {
       ''      => [],
       default => [$filterdefinitionvars],
     },
-    default   => $filterdefinitionvars,
+    default => $filterdefinitionvars,
   }
 
   $array_initvars = is_array($filterinitvars) ? {
-    false     => $filterinitvars? {
+    false   => $filterinitvars? {
       ''      => [],
       default => [$filterinitvars],
     },
-    default   => $filterinitvars,
+    default => $filterinitvars,
   }
 
   $ensure = bool2ensure($filterenable)
 
   $manage_file_source = $filtersource ? {
-    ''        => undef,
-    default   => $filtersource,
+    ''      => undef,
+    default => $filtersource,
   }
 
   $manage_file_content = $filtertemplate ? {
-    ''        => undef,
-    default   => $filtersource ? {
-      ''        => template($filtertemplate),
-      default   => undef,
+    ''      => undef,
+    default => $filtersource ? {
+      ''      => template($filtertemplate),
+      default => undef,
     }
   }
 

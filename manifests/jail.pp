@@ -67,19 +67,19 @@ define fail2ban::jail (
   }
 
   $array_ignoreip = is_array($ignoreip) ? {
-    false     => $ignoreip ? {
+    false   => $ignoreip ? {
       ''      => [],
       default => [$ignoreip],
     },
-    default   => $ignoreip,
+    default => $ignoreip,
   }
 
   $array_port = is_array($port) ? {
-    false     => $port ? {
+    false   => $port ? {
       ''      => [],
       default => [$port],
     },
-    default   => $port,
+    default => $port,
   }
 
   $real_protocol = $protocol ? {
@@ -88,19 +88,19 @@ define fail2ban::jail (
   }
 
   $array_action = is_array($action) ? {
-    false     => $action ? {
+    false   => $action ? {
       ''      => [],
       default => [$action],
     },
-    default   => $action,
+    default => $action,
   }
 
   $array_logpath = is_array($logpath) ? {
-    false     => $logpath ? {
+    false   => $logpath ? {
       ''      => [],
       default => [$logpath],
     },
-    default   => $logpath,
+    default => $logpath,
   }
 
   $real_maxretry = $maxretry ? {
