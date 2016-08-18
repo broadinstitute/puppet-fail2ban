@@ -1,3 +1,6 @@
+[![Build Status](https://travis-ci.org/broadinstitute/puppet-fail2ban.svg?branch=master)](https://travis-ci.org/broadinstitute/puppet-fail2ban)
+[![License (Apache 2.0)](https://img.shields.io/badge/license-Apache-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+
 # Puppet module: fail2ban
 
 This is a Puppet module for fail2ban based on the second generation layout ("NextGen") of Example42 Puppet Modules.
@@ -144,8 +147,3 @@ For detailed info about the logic and usage patterns of Example42 modules check 
           firewall_src  => '10.42.0.0/24',
           firewall_dst  => $ipaddress_eth0,
         }
-
-
-## CONTINUOUS TESTING
-
-Travis {<img src="https://travis-ci.org/broadinstitute/puppet-fail2ban.png?branch=master" alt="Build Status" />}[https://travis-ci.org/broadinstitute/puppet-fail2ban]
