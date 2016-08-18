@@ -6,11 +6,11 @@ Made by Javier Bértoli / Netmanagers
 
 Official site: http://www.netmanagers.com.ar
 
-Official git repository: http://github.com/netmanagers/puppet-fail2ban
+Official git repository: http://github.com/broadinstitute/puppet-fail2ban
 
 Released under the terms of Apache 2 License.
 
-This module depends on R.I.Pienaar's concat module (https://github.com/ripienaar/puppet-concat).
+This module depends on the Puppetlabs concat module (https://github.com/puppetlabs/puppetlabs-concat).
 
 This module requires functions provided by the Example42 Puppi module (you need it even if you don't use and install Puppi)
 
@@ -86,10 +86,10 @@ For detailed info about the logic and usage patterns of Example42 modules check 
 
 
 ## USAGE - Overrides and Customizations
-* Use custom sources for main config file 
+* Use custom sources for main config file
 
         class { 'fail2ban':
-          source => [ "puppet:///modules/example42/fail2ban/fail2ban.local-${hostname}" , "puppet:///modules/example42/fail2ban/fail2ban.local" ], 
+          source => [ "puppet:///modules/example42/fail2ban/fail2ban.local-${hostname}" , "puppet:///modules/example42/fail2ban/fail2ban.local" ],
         }
 
 
@@ -101,7 +101,7 @@ For detailed info about the logic and usage patterns of Example42 modules check 
         }
 
 * Use custom template for main config file. Note that template and source arguments are alternative.
-  In this new version, and following fail2ban recommendations, fail2ban.conf is untouched and 
+  In this new version, and following fail2ban recommendations, fail2ban.conf is untouched and
   fail2ban.local is created instead, overriding parameters.
 
         class { 'fail2ban':
@@ -115,18 +115,18 @@ For detailed info about the logic and usage patterns of Example42 modules check 
         }
 
 
-## USAGE - Example42 extensions management 
+## USAGE - Example42 extensions management
 * Activate puppi (recommended, but disabled by default)
 
         class { 'fail2ban':
           puppi    => true,
         }
 
-* Activate puppi and use a custom puppi_helper template (to be provided separately with a puppi::helper define ) to customize the output of puppi commands 
+* Activate puppi and use a custom puppi_helper template (to be provided separately with a puppi::helper define ) to customize the output of puppi commands
 
         class { 'fail2ban':
           puppi        => true,
-          puppi_helper => 'myhelper', 
+          puppi_helper => 'myhelper',
         }
 
 * Activate automatic monitoring (recommended, but disabled by default). This option requires the usage of Example42 monitor and relevant monitor tools modules
@@ -138,7 +138,7 @@ For detailed info about the logic and usage patterns of Example42 modules check 
 
 * Activate automatic firewalling. This option requires the usage of Example42 firewall and relevant firewall tools modules
 
-        class { 'fail2ban':       
+        class { 'fail2ban':
           firewall      => true,
           firewall_tool => 'iptables',
           firewall_src  => '10.42.0.0/24',
@@ -148,4 +148,4 @@ For detailed info about the logic and usage patterns of Example42 modules check 
 
 ## CONTINUOUS TESTING
 
-Travis {<img src="https://travis-ci.org/netmanagers/puppet-fail2ban.png?branch=master" alt="Build Status" />}[https://travis-ci.org/netmanagers/puppet-fail2ban]
+Travis {<img src="https://travis-ci.org/broadinstitute/puppet-fail2ban.png?branch=master" alt="Build Status" />}[https://travis-ci.org/broadinstitute/puppet-fail2ban]

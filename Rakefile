@@ -1,3 +1,6 @@
+require 'rubygems'
+require 'bundler/setup'
+
 require 'puppetlabs_spec_helper/rake_tasks'
 require 'puppet-lint/tasks/puppet-lint'
 require 'puppet-syntax/tasks/puppet-syntax'
@@ -18,12 +21,15 @@ PuppetLint.configuration.send("disable_80chars")
 PuppetLint.configuration.log_format = "%{path}:%{linenumber}:%{check}:%{KIND}:%{message}"
 PuppetLint.configuration.fail_on_warnings = true
 PuppetLint.configuration.relative = true
+PuppetLint.configuration.send('disable_case_without_default')
 
 # Forsake support for Puppet 2.6.2 for the benefit of cleaner code.
 # http://puppet-lint.com/checks/class_parameter_defaults/
 PuppetLint.configuration.send('disable_class_parameter_defaults')
 # http://puppet-lint.com/checks/class_inherits_from_params_class/
 PuppetLint.configuration.send('disable_class_inherits_from_params_class')
+# To fix unquoted cases in spec/fixtures/modules/apt/manifests/key.pp
+PuppetLint.configuration.send('disable_unquoted_string_in_case')
 
 exclude_paths = [
   "pkg/**/*",
