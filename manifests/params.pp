@@ -16,49 +16,49 @@ class fail2ban::params {
 
   ### Application related parameters
 
-  $package = $::operatingsystem ? {
+  $package = $::osfamily ? {
     default => 'fail2ban',
   }
 
-  $service = $::operatingsystem ? {
+  $service = $::osfamily ? {
     default => 'fail2ban',
   }
 
-  $service_status = $::operatingsystem ? {
+  $service_status = $::osfamily ? {
     default => true,
   }
 
-  $process = $::operatingsystem ? {
-    /(?i:Debian|Ubuntu|Mint)/                           => 'fail2ban-server',
-    /(?i:RedHat|Centos|Scientific|Fedora|OracleLinux)/  => 'fail2ban-server',
-    default                                             => 'fail2ban',
+  $process = $::osfamily ? {
+    'Debian' => 'fail2ban-server',
+    'RedHat' => 'fail2ban-server',
+    default  => 'fail2ban',
   }
 
-  $process_args = $::operatingsystem ? {
+  $process_args = $::osfamily ? {
     default => '',
   }
 
-  $process_user = $::operatingsystem ? {
+  $process_user = $::osfamily ? {
     default => 'fail2ban',
   }
 
-  $config_dir = $::operatingsystem ? {
+  $config_dir = $::osfamily ? {
     default => '/etc/fail2ban',
   }
 
-  $config_file = $::operatingsystem ? {
+  $config_file = $::osfamily ? {
     default => '/etc/fail2ban/fail2ban.local',
   }
 
-  $config_file_mode = $::operatingsystem ? {
+  $config_file_mode = $::osfamily ? {
     default => '0644',
   }
 
-  $config_file_owner = $::operatingsystem ? {
+  $config_file_owner = $::osfamily ? {
     default => 'root',
   }
 
-  $config_file_group = $::operatingsystem ? {
+  $config_file_group = $::osfamily ? {
     default => 'root',
   }
 
@@ -69,92 +69,92 @@ class fail2ban::params {
   #            fail2ban::jail define
   $jails_config = ''
 
-  $jails_file = $::operatingsystem ? {
+  $jails_file = $::osfamily ? {
     default => '/etc/fail2ban/jail.local',
   }
 
-  $jails_file_mode = $::operatingsystem ? {
+  $jails_file_mode = $::osfamily ? {
     default => '0644',
   }
 
-  $jails_file_owner = $::operatingsystem ? {
+  $jails_file_owner = $::osfamily ? {
     default => 'root',
   }
 
-  $jails_file_group = $::operatingsystem ? {
+  $jails_file_group = $::osfamily ? {
     default => 'root',
   }
 
-  $config_file_init = $::operatingsystem ? {
-    /(?i:Debian|Ubuntu|Mint)/ => '/etc/default/fail2ban',
-    default                   => '/etc/sysconfig/fail2ban',
+  $config_file_init = $::osfamily ? {
+    'Debian' => '/etc/default/fail2ban',
+    default  => '/etc/sysconfig/fail2ban',
   }
 
-  $pid_file = $::operatingsystem ? {
-    /(?i:Debian|Ubuntu|Mint)/ => '/var/run/fail2ban/fail2ban.pid',
-    default                   => '/var/run/fail2ban.pid',
+  $pid_file = $::osfamily ? {
+    'Debian' => '/var/run/fail2ban/fail2ban.pid',
+    default  => '/var/run/fail2ban.pid',
   }
 
-  $data_dir = $::operatingsystem ? {
+  $data_dir = $::osfamily ? {
     default => '/etc/fail2ban',
   }
 
-  $log_dir = $::operatingsystem ? {
+  $log_dir = $::osfamily ? {
     default => '/var/log/fail2ban',
   }
 
-  $log_file = $::operatingsystem ? {
+  $log_file = $::osfamily ? {
     default => '/var/log/fail2ban/fail2ban.log',
   }
 
-  $use_epel = $::operatingsystem ? {
-    /(?i:RedHat|Centos|Scientific|Fedora|OracleLinux)/  => true,
-    default                                             => false,
+  $use_epel = $::osfamily ? {
+    'RedHat' => true,
+    default  => false,
   }
 
-  $log_level = '3'
-  $socket    = '/var/run/fail2ban/fail2ban.sock'
+  $log_level             = '3'
+  $socket                = '/var/run/fail2ban/fail2ban.sock'
 
-  $ignoreip  = ['127.0.0.1/8']
-  $bantime   = '600'
-  $findtime  = '600'
-  $maxretry  = '5'
-  $backend   = 'auto'
-  $mailto    = "hostmaster@${::domain}"
-  $banaction = 'iptables-multiport'
-  $mta       = 'sendmail'
-  $jails_protocol  = 'tcp'
-  $jails_chain     = 'INPUT'
+  $ignoreip              = ['127.0.0.1/8']
+  $bantime               = '600'
+  $findtime              = '600'
+  $maxretry              = '5'
+  $backend               = 'auto'
+  $mailto                = "hostmaster@${::domain}"
+  $banaction             = 'iptables-multiport'
+  $mta                   = 'sendmail'
+  $jails_protocol        = 'tcp'
+  $jails_chain           = 'INPUT'
 
-  $jails = ''
-  $jails_source = ''
-  $jails_template = ''
+  $jails                 = ''
+  $jails_source          = ''
+  $jails_template        = ''
   $jails_template_header = 'fail2ban/concat/jail.local-header.erb'
   $jails_template_footer = 'fail2ban/concat/jail.local-footer.erb'
 
   # General Settings
-  $my_class = ''
-  $source = ''
-  $template = ''
-  $source_dir = ''
-  $source_dir_purge = false
-  $source_dir_owner = 'root'
-  $source_dir_group = 'root'
-  $options = ''
-  $service_autorestart = true
-  $version = 'present'
-  $absent = false
-  $disable = false
-  $disableboot = false
+  $my_class              = ''
+  $source                = ''
+  $template              = ''
+  $source_dir            = ''
+  $source_dir_purge      = false
+  $source_dir_owner      = 'root'
+  $source_dir_group      = 'root'
+  $options               = ''
+  $service_autorestart   = true
+  $version               = 'present'
+  $absent                = false
+  $disable               = false
+  $disableboot           = false
 
   ### General module variables that can have a site or per module default
-  $monitor = false
-  $monitor_tool = ''
-  $monitor_target = $::ipaddress
-  $puppi = false
-  $puppi_helper = 'standard'
-  $debug = false
-  $audit_only = false
-  $noops = false
+  $monitor               = false
+  $monitor_tool          = ''
+  $monitor_target        = $::ipaddress
+  $puppi                 = false
+  $puppi_helper          = 'standard'
+  $debug                 = false
+  $audit_only            = false
+  $noops                 = false
 
 }
