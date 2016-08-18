@@ -74,63 +74,63 @@ define fail2ban::action (
   $action_file = "${fail2ban::data_dir}/action.d/${real_actionname}.local"
 
   $array_start = is_array($actionstart) ? {
-    false     => $actionstart ? {
+    false   => $actionstart ? {
       ''      => [],
       default => [$actionstart],
     },
-    default   => $actionstart,
+    default => $actionstart,
   }
 
   $array_stop = is_array($actionstop) ? {
-    false     => $actionstop? {
+    false   => $actionstop? {
       ''      => [],
       default => [$actionstop],
     },
-    default   => $actionstop,
+    default => $actionstop,
   }
 
   $array_check = is_array($actioncheck) ? {
-    false     => $actioncheck? {
+    false   => $actioncheck? {
       ''      => [],
       default => [$actioncheck],
     },
-    default   => $actioncheck,
+    default => $actioncheck,
   }
 
   $array_ban = is_array($actionban) ? {
-    false     => $actionban? {
+    false   => $actionban? {
       ''      => [],
       default => [$actionban],
     },
-    default   => $actionban,
+    default => $actionban,
   }
 
   $array_unban = is_array($actionunban) ? {
-    false     => $actionunban? {
+    false   => $actionunban? {
       ''      => [],
       default => [$actionunban],
     },
-    default   => $actionunban,
+    default => $actionunban,
   }
 
   $array_initvars = is_array($actioninitvars) ? {
-    false     => $actioninitvars? {
+    false   => $actioninitvars? {
       ''      => [],
       default => [$actioninitvars],
     },
-    default   => $actioninitvars,
+    default => $actioninitvars,
   }
 
   $ensure = bool2ensure($actionenable)
 
   $manage_file_source = $actionsource ? {
-    ''        => undef,
-    default   => $actionsource,
+    ''      => undef,
+    default => $actionsource,
   }
 
   $manage_file_content = $actiontemplate ? {
-    ''        => undef,
-    default   => template($actiontemplate),
+    ''      => undef,
+    default => template($actiontemplate),
   }
 
   file { "${real_actionname}.local":
