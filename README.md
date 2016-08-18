@@ -5,17 +5,17 @@
 
 This is a Puppet module for fail2ban based on the second generation layout ("NextGen") of Example42 Puppet Modules.
 
-Made by Javier Bértoli / Netmanagers
-
-Official site: http://www.netmanagers.com.ar
+Original module created by Javier Bértoli / Netmanagers.  This fork is currently maintained by the Broad Institute.
 
 Official git repository: http://github.com/broadinstitute/puppet-fail2ban
 
 Released under the terms of Apache 2 License.
 
-This module depends on the Puppetlabs concat module (https://github.com/puppetlabs/puppetlabs-concat).
-
-This module requires functions provided by the Example42 Puppi module (you need it even if you don't use and install Puppi)
+This module has the following dependencies:
+* The PuppetLabs __concat__ module (https://github.com/puppetlabs/puppetlabs-concat)
+* The PuppetLabs __stdlib__ module (https://github.com/puppetlabs/puppetlabs-stdlib)
+* The Example42 __puppi__ module (https://github.com/example42/puppi)
+* The Example42 __monitor__ module (https://github.com/example42/puppet-monitor)
 
 For detailed info about the logic and usage patterns of Example42 modules check the DOCS directory on Example42 main modules set.
 
