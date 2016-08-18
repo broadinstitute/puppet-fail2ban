@@ -1,3 +1,4 @@
+<%= ERB.new(File.read(File.expand_path("_header.erb",File.dirname(File.dirname(file))))).result(binding) %>
 [DEFAULT]
 <% if scope.lookupvar("fail2ban::ignoreip") != '' -%>
 ignoreip = <%= scope.lookupvar("fail2ban::ignoreip") * ' ' %>

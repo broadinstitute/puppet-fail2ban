@@ -1,4 +1,4 @@
-# This file is managed by Puppet. DO NOT EDIT.
+<%= ERB.new(File.read(File.expand_path("_header.erb",File.dirname(file)))).result(binding) %>
 [DEFAULT]
 ignoreip = <%= scope.lookupvar('fail2ban::ignoreip') * ' ' %>
 bantime  = <%= scope.lookupvar('fail2ban::bantime') %>

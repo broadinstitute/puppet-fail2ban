@@ -17,8 +17,9 @@ describe 'fail2ban::filter' do
       }
     end
     let(:expected) do
-"# This file is managed by Puppet. DO NOT EDIT.
-#
+"# Managed by Puppet
+# Module: fail2ban
+
 [INCLUDES]
 
 
@@ -47,8 +48,9 @@ ignoreregex =
        }
      end
      let(:expected) do
-"# This file is managed by Puppet. DO NOT EDIT.
-#
+"# Managed by Puppet
+# Module: fail2ban
+
 [INCLUDES]
 
 before = add_before

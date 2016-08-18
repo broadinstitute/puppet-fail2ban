@@ -17,8 +17,9 @@ describe 'fail2ban::action' do
       }
     end
     let(:expected) do
-"# This file is managed by Puppet. DO NOT EDIT.
-#
+"# Managed by Puppet
+# Module: fail2ban
+
 [INCLUDES]
 
 
@@ -46,8 +47,9 @@ describe 'fail2ban::action' do
        }
      end
      let(:expected) do
-"# This file is managed by Puppet. DO NOT EDIT.
-#
+"# Managed by Puppet
+# Module: fail2ban
+
 [INCLUDES]
 
 before = add_before
@@ -67,7 +69,7 @@ b = 2
 not c
 "
      end
- 
+
      it { should contain_file('sample2.local').with_path('/etc/fail2ban/action.d/sample2.local').with_content(expected) }
      it { should contain_file('sample2.local').without_source }
    end
