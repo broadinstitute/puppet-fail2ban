@@ -1,6 +1,6 @@
 require "#{File.join(File.dirname(__FILE__),'..','spec_helper.rb')}"
 
-describe 'fail2ban' do
+describe 'fail2ban', :type => :class do
 
   let(:title) { 'fail2ban' }
   let(:node) { 'rspec.example42.com' }
@@ -10,7 +10,7 @@ describe 'fail2ban' do
     it { should contain_package('fail2ban').with_ensure('present') }
     it { should contain_service('fail2ban').with_ensure('running') }
     it { should contain_service('fail2ban').with_enable('true') }
-    it { should_not contain_file('fail2ban.local') }
+    it { should contain_file('fail2ban.local') }
     it { should_not contain_file('jail.local') }
   end
 
@@ -50,7 +50,7 @@ enabled  = true/) }
     it { should contain_package('fail2ban').with_ensure('present') }
     it { should contain_service('fail2ban').with_ensure('running') }
     it { should contain_service('fail2ban').with_enable('true') }
-    it { should_not contain_file('fail2ban.local') }
+    it { should contain_file('fail2ban.local') }
     it { should_not contain_file('jail.local') }
     it { should contain_monitor__process('fail2ban_process').with_enable('true') }
   end
@@ -69,7 +69,7 @@ enabled  = true/) }
     it { should contain_package('fail2ban').with_ensure('present') }
     it 'should stop Service[fail2ban]' do should contain_service('fail2ban').with_ensure('stopped') end
     it 'should not enable at boot Service[fail2ban]' do should contain_service('fail2ban').with_enable('false') end
-    it { should_not contain_file('fail2ban.local') }
+    it { should contain_file('fail2ban.local') }
     it { should_not contain_file('jail.local') }
     it { should contain_monitor__process('fail2ban_process').with_enable('false') }
   end
@@ -80,7 +80,7 @@ enabled  = true/) }
     it { should_not contain_service('fail2ban').with_ensure('present') }
     it { should_not contain_service('fail2ban').with_ensure('absent') }
     it 'should not enable at boot Service[fail2ban]' do should contain_service('fail2ban').with_enable('false') end
-    it { should_not contain_file('fail2ban.local') }
+    it { should contain_file('fail2ban.local') }
     it { should_not contain_file('jail.local') }
     it { should contain_monitor__process('fail2ban_process').with_enable('false') }
   end
@@ -128,7 +128,7 @@ enabled  = true/) }
 
   describe 'Test service autorestart' do
     let(:params) do
-      { 
+      {
         :service_autorestart => "no",
         :template => "fail2ban/spec.erb"
       }

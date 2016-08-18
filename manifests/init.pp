@@ -352,15 +352,15 @@ class fail2ban (
   $use_epel              = params_lookup( 'use_epel' ),
   ) inherits fail2ban::params {
 
-  $bool_source_dir_purge=any2bool($source_dir_purge)
-  $bool_service_autorestart=any2bool($service_autorestart)
-  $bool_absent=any2bool($absent)
-  $bool_disable=any2bool($disable)
-  $bool_disableboot=any2bool($disableboot)
-  $bool_monitor=any2bool($monitor)
-  $bool_puppi=any2bool($puppi)
-  $bool_debug=any2bool($debug)
-  $bool_audit_only=any2bool($audit_only)
+  $bool_source_dir_purge    = any2bool($source_dir_purge)
+  $bool_service_autorestart = any2bool($service_autorestart)
+  $bool_absent              = any2bool($absent)
+  $bool_disable             = any2bool($disable)
+  $bool_disableboot         = any2bool($disableboot)
+  $bool_monitor             = any2bool($monitor)
+  $bool_puppi               = any2bool($puppi)
+  $bool_debug               = any2bool($debug)
+  $bool_audit_only          = any2bool($audit_only)
 
   ### Definition of some variables used in the module
   $manage_package = $fail2ban::bool_absent ? {
@@ -398,8 +398,8 @@ class fail2ban (
   }
 
   if $fail2ban::bool_absent == true
-  or $fail2ban::bool_disable == true
-  or $fail2ban::bool_disableboot == true {
+    or $fail2ban::bool_disable == true
+    or $fail2ban::bool_disableboot == true {
     $manage_monitor = false
   } else {
     $manage_monitor = true
@@ -537,7 +537,7 @@ class fail2ban (
 
   ### Provide puppi data, if enabled ( puppi => true )
   if $fail2ban::bool_puppi == true {
-    $classvars=get_class_args()
+    $classvars = get_class_args()
     puppi::ze { 'fail2ban':
       ensure    => $fail2ban::manage_file,
       variables => $classvars,
@@ -549,16 +549,6 @@ class fail2ban (
 
   ### Service monitoring, if enabled ( monitor => true )
   if $fail2ban::bool_monitor == true {
-    if $fail2ban::port != '' {
-      monitor::port { "fail2ban_${fail2ban::protocol}_${fail2ban::port}":
-        protocol => $fail2ban::protocol,
-        port     => $fail2ban::port,
-        target   => $fail2ban::monitor_target,
-        tool     => $fail2ban::monitor_tool,
-        enable   => $fail2ban::manage_monitor,
-        noop     => $fail2ban::noops,
-      }
-    }
     if $fail2ban::service != '' {
       monitor::process { 'fail2ban_process':
         process  => $fail2ban::process,

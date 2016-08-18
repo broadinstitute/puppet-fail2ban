@@ -11,8 +11,16 @@ after = <%= @filterafter -%>
 
 [Definition]
 
+<% if !@array_failregex.empty? -%>
 failregex = <%= @array_failregex.join("\n\t") %>
+<% else -%>
+failregex =
+<% end -%>
+<% if !@array_ignoreregex.empty? -%>
 ignoreregex = <%= @array_ignoreregex.join("\n\t") %>
+<% else -%>
+ignoreregex =
+<% end -%>
 
 <% if @array_definitionvars != [] -%>
 <%= @array_definitionvars.join("\n") %>

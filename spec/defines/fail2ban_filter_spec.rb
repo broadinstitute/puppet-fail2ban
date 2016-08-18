@@ -24,8 +24,11 @@ describe 'fail2ban::filter' do
 
 [Definition]
 
-failregex = 
-ignoreregex = 
+failregex =
+ignoreregex =
+
+
+[Init]
 
 "
     end
@@ -59,6 +62,9 @@ ignoreregex = now_ignore
 a = 1
 b = 2
 not c
+
+[Init]
+
 "
      end
 
