@@ -428,6 +428,8 @@ class fail2ban (
 
   if $use_epel {
     $pkg_require = Class['Epel']
+
+    require ::epel
   } else {
     $pkg_require = undef
   }
