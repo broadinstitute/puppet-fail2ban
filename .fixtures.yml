@@ -6,6 +6,6 @@ fixtures:
     puppi: 'example42/puppi'
     stdlib:
       repo: 'puppetlabs/stdlib'
-      ref: '4.12.0'
+      ref: '4.13.0'
   symlinks:
     "fail2ban": "#{source_dir}"
