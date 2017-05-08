@@ -1,6 +1,8 @@
 fixtures:
   forge_modules:
-    concat: 'puppetlabs/concat'
+    concat:
+      repo: 'puppetlabs/concat'
+      ref: '2.2.1'
     epel: 'stahnma/epel'
     monitor: 'example42/monitor'
     puppi: 'example42/puppi'
